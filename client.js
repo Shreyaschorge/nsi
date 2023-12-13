@@ -40,6 +40,11 @@
   function createSignInButton() {
     var signinElements = document.querySelectorAll(".neynar_signin");
     signinElements.forEach(function (elem) {
+      // Check if the button already exists
+      if (elem.querySelector("button")) {
+        return; // If button exists, skip to the next element
+      }
+
       var clientId = elem.getAttribute("data-client_id");
       var neynarLoginUrl = elem.getAttribute("data-neynar_login_url");
       var redirectUri = elem.getAttribute("data-redirect_uri"); // Optional
@@ -56,7 +61,6 @@
       };
 
       // Apply basic styles to the button
-      // ... [style the button as in previous example] ...
       button.style.padding = "10px 15px";
       button.style.border = "1px solid #ccc";
       button.style.borderRadius = "4px";
@@ -64,7 +68,6 @@
       button.style.color = "#000";
       button.style.cursor = "pointer";
       button.style.fontSize = "16px";
-
 
       elem.appendChild(button);
     });
