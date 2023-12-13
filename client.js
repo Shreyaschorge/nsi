@@ -34,34 +34,40 @@
     );
   }
 
-  function createSignInButton(element) {
-    var clientId = element.getAttribute("data-client_id");
-    var neynarLoginUrl = element.getAttribute("data-neynar_login_url");
-    var redirectUri = element.getAttribute("data-redirect_uri");
-    var successCallback = element.getAttribute("data-success-callback");
+   function createSignInButton(element) {
+     var clientId = element.getAttribute("data-client_id");
+     var neynarLoginUrl = element.getAttribute("data-neynar_login_url");
+     var redirectUri = element.getAttribute("data-redirect_uri");
+     var successCallback = element.getAttribute("data-success-callback");
 
-    if (!clientId || !neynarLoginUrl) {
-      console.error("Neynar Signin: Missing required data attributes");
-      return;
-    }
+     if (!clientId || !neynarLoginUrl) {
+       console.error("Neynar Signin: Missing required data attributes");
+       return;
+     }
 
-    var button = document.createElement("button");
-    button.textContent = "Sign In with Neynar";
-    button.onclick = function () {
-      handleSignIn(neynarLoginUrl, clientId, redirectUri, successCallback);
-    };
+     // Check if the button already exists
+     var existingButton = element.querySelector("button");
+     if (existingButton) {
+       return; // If button exists, do not create a new one
+     }
 
-    // Apply styles to the button
-    button.style.padding = "10px 15px";
-    button.style.border = "1px solid #ccc";
-    button.style.borderRadius = "4px";
-    button.style.backgroundColor = "#fff";
-    button.style.color = "#000";
-    button.style.cursor = "pointer";
-    button.style.fontSize = "16px";
+     var button = document.createElement("button");
+     button.textContent = "Sign In with Neynar";
+     button.onclick = function () {
+       handleSignIn(neynarLoginUrl, clientId, redirectUri, successCallback);
+     };
 
-    element.appendChild(button);
-  }
+     // Apply basic styles to the button
+     button.style.padding = "10px 15px";
+     button.style.border = "1px solid #ccc";
+     button.style.borderRadius = "4px";
+     button.style.backgroundColor = "#fff";
+     button.style.color = "#000";
+     button.style.cursor = "pointer";
+     button.style.fontSize = "16px";
+
+     element.appendChild(button);
+   }
 
   function init() {
     var signinElements = document.querySelectorAll(".neynar_signin");
