@@ -28,7 +28,7 @@
 </linearGradient>
 </defs>
 </svg>
-`; 
+`;
 
   var lightModeSvg = `<svg width="205" height="48" viewBox="0 0 205 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d_6_3)">
@@ -68,6 +68,7 @@
 
   function handleMessage(event, authOrigin, successCallback) {
     if (event.origin === authOrigin && event.data.is_authenticated) {
+      console.log("Neynar Signin: User is authenticated", event.data);
       if (typeof window[successCallback] === "function") {
         window[successCallback](event.data); // Call the global callback function
       }
