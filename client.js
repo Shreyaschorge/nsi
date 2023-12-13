@@ -4,7 +4,7 @@
   var neynarLoginUrl = "YOUR_NEYNAR_LOGIN_URL";
   var authWindow;
 
-  if (!clientId || !redirectUri || !neynarLoginUrl) {
+  if (!clientId || !neynarLoginUrl) {
     console.error("Signin Button: Missing configuration");
     return;
   }
