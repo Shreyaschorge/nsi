@@ -6,7 +6,7 @@
       var loginUri = elem.getAttribute("data-login_uri");
       var neynarLoginUrl = elem.getAttribute("data-neynar_login_url");
 
-      if (!clientId || !loginUri || !neynarLoginUrl) {
+      if (!clientId || !neynarLoginUrl) {
         console.error("Neynar Signin: Missing required data attributes");
         return;
       }
