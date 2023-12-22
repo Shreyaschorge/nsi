@@ -158,7 +158,12 @@
       }
     }
 
-    if (variant === "warpcast") {
+    if ((!variant && !text) || variant === "neynar") {
+      button.innerHTML = `
+          <span>${neynarLogo}</span>
+          <span>Sign in with Neynar</span>
+        `;
+    } else if (variant === "warpcast") {
       button.innerHTML = `
           <span>${warpcastLogo}</span>
           <span>Connect Warpcast</span>
@@ -167,11 +172,6 @@
       button.innerHTML = `
           <span>${farcasterLogo}</span>
           <span>Connect Farcaster</span>
-        `;
-    } else if (variant === "neynar") {
-      button.innerHTML = `
-          <span>${neynarLogo}</span>
-          <span>Sign in with Neynar</span>
         `;
     } else {
       button.innerHTML = `
